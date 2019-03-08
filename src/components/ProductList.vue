@@ -1,17 +1,46 @@
 <template>
-    <b-card
-    title="flowers"
-    img-src="https://picsum.photos/600/300/?image=25"
-    img-alt="Image"
-    img-top
-    tag="article"
-    style="max-width: 20rem;"
-    class="mb-2"
-  >
-    <b-card-text>
-      Some quick example text to build on the card title and make up the bulk of the card's content.
-    </b-card-text>
-
-    <b-button href="#" variant="primary">Go somewhere</b-button>
-  </b-card>
+<b-container>
+    <h1>Products</h1>
+    <div class="card-columns">
+        <product-card v-for="product in products" :key="product.sku" :product="product"></product-card>
+    </div>
+</b-container>
 </template>
+
+<script>
+const apiURL = 'http://localhost:3000';
+import productCard from '@/components/ProductCard';
+import axios from 'axios';
+export default {
+    name: 'Products',
+      components: {
+        'product-card': productCard
+  },
+
+    data() {
+        return {
+            products: {}
+        }
+    },
+
+    created() {
+        this.fetchData()
+    },
+
+    methods: {
+        fetchData() {
+            axios.get(`${apiURL}/products`)
+                .then((resp) => {
+                    this.products = resp.data;
+                    console.log(resp)
+                })
+                .catch((err) => {
+                  this.products = {};
+                  alert("Products Not Found");
+                    console.log(err)
+                })
+
+        }
+    }
+}
+</script>
