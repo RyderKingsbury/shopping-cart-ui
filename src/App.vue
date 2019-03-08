@@ -46,6 +46,11 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'App'
+};
+</script>
 
 <style>
 #app {
@@ -82,5 +87,10 @@
     display: inline;
     list-style-type: none;
   }
-
+.search-wrapper {
+  margin: 20px;
+}
+.badge {
+  border-radius: 0;
+}
 </style>

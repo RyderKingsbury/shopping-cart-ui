@@ -7,8 +7,10 @@
         </div>
         <div class="product-info">
             <h1>{{ product.name }}</h1>
-            <h2>${{ product.price.$numberDecimal }} </h2>
+            <h2>${{ product.price }} </h2>
             <p>{{ product.description }} </p>
+            <b-button>Add to Cart</b-button>
+            <b-button>Remove from Cart</b-button>
         </div>
     </div>
 </div>
