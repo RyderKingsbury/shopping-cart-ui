@@ -16,7 +16,7 @@
 </template>
 
 <script>
-const apiURL = 'http://localhost:3000';
+import {apiURL} from '../config'
 import axios from 'axios';
 export default {
     name: 'Product',
